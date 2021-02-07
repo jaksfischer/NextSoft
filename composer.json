@@ -1,0 +1,16 @@
+{
+    "name": "hittheroad/site",
+    "description": "",
+    "type": "proprietary",
+    "license": "MIT",
+    "version": "1.0.0",
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "HTR\\Controller\\": "src/Controller",
+            "HTR\\Model\\": "src/Model",
+            "HTR\\DAO\\": "src/DAO",
+            "HTR\\JS\\": "src/JS"
+        }
+    }
+}
