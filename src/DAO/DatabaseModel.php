@@ -80,7 +80,6 @@ class DatabaseModel
 		}
 
 		$searchLastId = $this->mysqli->query("SELECT MAX(id) as id FROM users");
-//		$searchLastId->execute();
 		$lastIdSearched = mysqli_fetch_object($searchLastId);
 
 		$newId = $this->mysqli->query("SELECT idUser FROM users WHERE id = '$lastIdSearched->id'");
@@ -139,19 +138,16 @@ class DatabaseModel
 		$buscaCad = $this->mysqli->query("SELECT idUser FROM users WHERE cpf = '$cpf'");
 		$idUser = mysqli_fetch_object($buscaCad);
 
-//		$buscaCad = $this->mysqli->query("SELECT users.id, users.idUser, users.nome, users.cpf, users.email, users.telefone, address.logradouro, address.cep, address.numero, address.complemento, address.bairro, address.bairro, address.cidade, address.estado, address.tipo FROM users INNER JOIN address ON users.idUser = address.idUser WHERE address.idUser = '$idUser->idUser'");
 		$buscaCad = $this->mysqli->query("SELECT * FROM users INNER JOIN address ON users.idUser = address.idUser WHERE address.idUser = '$idUser->idUser'");
 
 		if(mysqli_num_rows($buscaCad) == 0) {
 			$return['status'] = 400;
-			$return['message'] = "Este CPF na=ão está cadastrado em nossa base.";
+			$return['message'] = "Este CPF não está cadastrado em nossa base.";
 
 			return $return;
 		}
 
 		foreach ($buscaCad as $key=>$one) {
-
-//			$user = new UserModel();
 
 			$user['Id'] = $one['id'];
 			$user['IdUser'] = $one['idUser'];
@@ -159,8 +155,6 @@ class DatabaseModel
 			$user['Cpf'] = $one['cpf'];
 			$user['Email'] = $one['email'];
 			$user['Telefone'] = $one['telefone'];
-
-//			$address = new AddressModel();
 
 			$address['idUser'] = $one['idUser'];
 			$address['Logradouro'] = $one['logradouro'];
