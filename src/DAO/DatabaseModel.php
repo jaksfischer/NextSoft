@@ -36,7 +36,7 @@ class DatabaseModel
 				foreach ($userData as $one) {
 					if($one[1] == $dados['tipo']) {
 						$return["status"] = 400;
-						$return["message"] =  "Já existe um cadastro para o tipo de entrega <strong>" . $dados['tipo']. "</strong>.";
+						$return["message"] =  "Já existe um cadastro para o tipo <strong>" . $dados['tipo']. "</strong>.";
 						return $return;
 						break;
 					} else {
