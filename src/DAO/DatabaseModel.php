@@ -217,7 +217,7 @@ class DatabaseModel
 
 	public function deletarCad($id, $tipo) {
 
-		$deleta = $this->mysqli->query("DELETE FROM address WHERE id = '$id' AND tipo = '$tipo'");
+		$deleta = $this->mysqli->query("DELETE FROM address WHERE idUser = '$id' AND tipo = '$tipo'");
 
 		if(!$deleta) {
 			$return['status'] = 400;
